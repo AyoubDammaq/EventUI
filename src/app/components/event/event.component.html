@@ -1,0 +1,22 @@
+<div>
+  <h1>Event Management</h1>
+
+  <!-- Event List -->
+  <div *ngFor="let event of events">
+    <h3>{{ event.eventTitle }}</h3>
+    <p>{{ event.eventDescription }}</p>
+    <button (click)="deleteEvent(event.eventId)">Delete</button>
+    <button (click)="selectEvent(event)">Edit</button>
+  </div>
+
+  <!-- Event Form -->
+  <form (ngSubmit)="selectedEvent.eventId ? updateEvent() : createEvent()">
+    <input [(ngModel)]="selectedEvent.eventTitle" placeholder="Title" name="title" required/>
+    <input [(ngModel)]="selectedEvent.eventDescription" placeholder="Description" name="description" required/>
+    <input [(ngModel)]="selectedEvent.eventCategory" placeholder="Category" name="category" required/>
+    <input [(ngModel)]="selectedEvent.eventDateTime" type="datetime-local" name="datetime" required/>
+    <input [(ngModel)]="selectedEvent.eventLocation" placeholder="Location" name="location" required/>
+    <input [(ngModel)]="selectedEvent.numberOfGuests" type="number" name="guests" required/>
+    <button type="submit">{{ selectedEvent.eventId ? 'Update' : 'Create' }}</button>
+  </form>
+</div>
