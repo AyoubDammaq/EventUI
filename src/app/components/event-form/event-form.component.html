@@ -1,0 +1,22 @@
+<h2>{{ isEditMode ? 'Edit Event' : 'New Event' }}</h2>
+<form (ngSubmit)="saveEvent()">
+  <label>Title:
+    <input [(ngModel)]="event.eventTitle" name="eventTitle" required />
+  </label>
+  <label>Description:
+    <textarea [(ngModel)]="event.eventDescription" name="eventDescription"></textarea>
+  </label>
+  <label>Category:
+    <input [(ngModel)]="event.eventCategory" name="eventCategory" />
+  </label>
+  <label>Date and Time:
+    <input [(ngModel)]="event.eventDateTime" name="eventDateTime" type="datetime-local" required />
+  </label>
+  <label>Location:
+    <input [(ngModel)]="event.eventLocation" name="eventLocation" />
+  </label>
+  <label>Number of Guests:
+    <input [(ngModel)]="event.numberOfGuests" name="numberOfGuests" type="number" />
+  </label>
+  <button type="submit">{{ isEditMode ? 'Update' : 'Create' }} Event</button>
+</form>

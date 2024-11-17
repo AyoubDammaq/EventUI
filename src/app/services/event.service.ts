@@ -19,7 +19,7 @@ export interface Event {
   providedIn: 'root'
 })
 export class EventService {
-  private apiUrl = 'https://localhost:7135/api/event/';
+  private apiUrl = 'https://localhost:7051/api/event/';
 
   constructor(private http: HttpClient) {}
 
@@ -32,14 +32,14 @@ export class EventService {
   }
 
   createEvent(event: Event): Observable<Event> {
-    return this.http.post<Event>(this.apiUrl, event);
+    return this.http.post<Event>(this.apiUrl+"/create", event);
   }
 
   updateEvent(eventId: string, event: Event): Observable<Event> {
-    return this.http.put<Event>(`${this.apiUrl}/${eventId}`, event);
+    return this.http.put<Event>(`${this.apiUrl}+"/edit"/${eventId}`, event);
   }
 
   deleteEvent(eventId: string): Observable<void> {
-    return this.http.delete<void>(`${this.apiUrl}/${eventId}`);
+    return this.http.delete<void>(`${this.apiUrl}+"/delete"/${eventId}`);
   }
 }
